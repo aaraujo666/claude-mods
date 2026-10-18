@@ -8,25 +8,41 @@ Each mod is a subfolder.
 |---|---|
 | `session-gauges` | Shows a band above the prompt with a context-window fill bar (`42% 84k / 200k`, green, then yellow at 60%, then red at 80%). It also shows a count of background tasks still running. Click the count to open the desktop app's tasks pane. |
 
-## Install (once per machine)
+## Install
 
-Use the desktop app's bundled engine. The npm `claude` on PATH (2.1.198) is too old for mods.
+The mods are published at https://github.com/aaraujo666/claude-mods. Install one from the prompt
+of a Claude Code terminal session:
+
+```
+/plugin install session-gauges --marketplace aaraujo666/claude-mods
+```
+
+From a shell, run `claude plugin install session-gauges --marketplace aaraujo666/claude-mods`.
+
+In the Claude desktop app, where `/plugin` doesn't run: click **+** next to the prompt box, then
+**Plugins**, then **Add marketplace** with `aaraujo666/claude-mods`, then **Add plugin**.
+
+Mods need a recent Claude Code with function-hooks support. These were built and tested on 2.1.299.
+
+### Working copy (the author's machine)
+
+To work on a mod, install it from a local clone instead. A folder marketplace runs the plugin from
+that folder, not from a copy. After an edit, run `/reload-plugins` or start a new session. You
+don't need to reinstall.
 
 ```powershell
 $c = (Get-ChildItem "$env:APPDATA\Claude\claude-code\*\*\claude.exe" | Sort-Object LastWriteTime | Select-Object -Last 1).FullName
-& $c plugin marketplace add C:\Users\antho\source\tools\claude-mods
+& $c plugin marketplace add <path-to-clone>
 & $c plugin install session-gauges@anthony-mods --scope user
 ```
 
-The marketplace is a folder, so the installed plugin runs **from this folder**, not from a copy.
-After you edit a mod, run `/reload-plugins` in a terminal session or start a new session. You don't
-need to reinstall or bump the version.
+Use the desktop app's bundled engine. An older npm `claude` on PATH may be too old for mods.
 
 ## Check a mod
 
 ```powershell
-& $c plugin validate C:\Users\antho\source\tools\claude-mods\session-gauges
-& $c plugin test     C:\Users\antho\source\tools\claude-mods\session-gauges
+& $c plugin validate .\session-gauges
+& $c plugin test     .\session-gauges
 ```
 
 ## Traps
