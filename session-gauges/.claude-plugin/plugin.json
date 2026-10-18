@@ -1,0 +1,6 @@
+{
+  "name": "session-gauges",
+  "version": "0.1.0",
+  "description": "Band above the prompt: context-window fill bar and the count of background tasks still in flight.",
+  "types": "./types/index.d.ts"
+}

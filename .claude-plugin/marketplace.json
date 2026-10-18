@@ -1,0 +1,11 @@
+{
+  "name": "anthony-mods",
+  "owner": { "name": "Anthony Araujo" },
+  "plugins": [
+    {
+      "name": "session-gauges",
+      "source": "./session-gauges",
+      "description": "Band above the prompt: context-window fill bar and a clickable count of background tasks still in flight."
+    }
+  ]
+}
